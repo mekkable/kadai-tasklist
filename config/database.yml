@@ -48,7 +48,9 @@ test:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.production:
 production:
-  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
   database: kadai_tasklist_production
   username: kadai_tasklist
   password: <%= ENV['KADAI_TASKLIST_DATABASE_PASSWORD'] %>
