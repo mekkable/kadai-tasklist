@@ -1,5 +1,5 @@
 <header>
-  <nav >
+  <nav>
     <div>
       <a href="/">Tasklist</a>
       <button>
@@ -8,9 +8,12 @@
 
       <div>
         <ul>
-          <li><%= link_to '登録', signup_path %></li>
-          <li><%= link_to 'ログイン', login_path %></li>
-          <li><%= link_to 'ログアウト', logout_path, method: :delete %></li>
+          <% unless logged_in? %>
+            <li><%= link_to '登録', signup_path %></li>
+            <li><%= link_to 'ログイン', login_path %></li>
+          <% else %>
+            <li><%= link_to 'ログアウト', logout_path, method: :delete %></li>
+          <% end %>
         </ul>
       </div>
     </div>

@@ -1,17 +1,10 @@
 class TasksController < ApplicationController
-  before_action :correct_user, only: [:destroy]
+  before_action :correct_user, only: [:destroy, :show]
   before_action :require_user_logged_in
   
   def index
-    
-    unless logged_in?
-      redirect_to login_path
-    else
       @task = current_user.tasks.build
       @pagy,@tasks = pagy(current_user.tasks.order(id: :desc))
-    end
-    
-    
   end
 
   def show
